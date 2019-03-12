@@ -1,0 +1,197 @@
+<div id="content" class="right_sidebar">
+    <div class="inner">
+        <div class="general_content">
+            <div class="main_content">
+                <!-- 热门 div -->
+                <div class="block_special_topic">
+                    <div class="type"><p>热门 主题</p></div>
+                    <div class="title">
+                        <p>
+                            <a href="http://www.cnblogs.com/hntzjy/p/9359572.html" target="_blank">python的市场占有率?</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="separator" style="height:17px;"></div>
+                <div class="block_home_slider">
+                    <!-- 轮播图 -->
+                    <div id="home_slider" class="flexslider">
+                        <ul class="slides">
+                            <!-- 模板-->
+                            {% for banner in banners_list %}
+                                <li>
+                                    <div class="slide">
+                                        <a href="http://127.0.0.1:8000/detail/{{ banner.new_id }}">
+                                            <img src="{{ banner.image_url }}" alt=""/>
+                                        </a>
+                                        <div class="caption"></div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#home_slider').flexslider({
+                                animation: 'slide',
+                                controlNav: true,
+                                directionNav: true,
+                                animationLoop: true,
+                                slideshow: true,
+                                useCSS: false,
+                                slideshowSpeed: 2000,
+                                animationDuration: 1100,
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="line_2" style="margin:34px 0px 28px;"></div>
+                <!-- 轮播图下 左边新闻-->
+                <div class="block_home_col_1">
+                    {#            模板  有三条新闻#}
+                    {% for new in news_left %}
+                        <div class="block_home_post">
+                            <div class="pic">
+                                <a href="http://127.0.0.1:8000/detail/{{ new.new_id }}" class="w_hover">
+                                    <img src="{{ new.image_url }}" alt="" style="width: 64px;height: 45px"/>
+                                    <span></span>
+                                </a>
+                            </div>
+
+                            <div class="text">
+                                <p class="title"><a
+                                        href="http://127.0.0.1:8000/detail/{{ new.new_id }}">{{ new.title }}</a></p>
+                                <div class="date"><p>{{ new.news_date }}</p></div>
+
+                            </div>
+                        </div>
+                        <div class="line_3" style="margin:14px 0px 17px;"></div>
+                    {% endfor %}
+                </div>
+                <!-- 轮播图下 右边新闻-->
+                <div class="block_home_col_2">
+                    <div class="line_3 first" style="margin:14px 0px 17px;"></div>
+                    {#            模板  有三条新闻#}
+                    {% for new in news_right %}
+                        <div class="block_home_post">
+                            <div class="pic">
+                                <a href="http://127.0.0.1:8000/detail/{{ new.new_id }}" class="w_hover">
+                                    <img src="{{ new.image_url }}" alt="" style="width: 64px;height: 45px"/>
+                                    <span></span>
+                                </a>
+                            </div>
+
+                            <div class="text">
+                                <p class="title"><a
+                                        href="http://127.0.0.1:8000/detail/{{ new.new_id }}">{{ new.title }}</a></p>
+                                <div class="date"><p>{{ new.news_date }}</p></div>
+                            </div>
+                        </div>
+                        <div class="line_3" style="margin:14px 0px 17px;"></div>
+                    {% endfor %}
+                </div>
+                <div class="clearboth"></div>
+
+                <div class="line_3" style="margin:14px 0px 13px;"></div>
+                <div class="clearboth"></div>
+                <div class="line_3" style="margin:13px 0px 35px;"></div>
+
+                <h3 style="font-size:16px;">全部新闻</h3>
+                <div class="line_4" style="margin:-4px 0px 18px;"></div>
+                {#            模板  有四条新闻#}
+                <div class="block_topic_news">
+                    {% for new in news %}
+                        <article class="block_topic_post">
+                            <p class="title"><a href="http://127.0.0.1:8000/detail/{{ new.new_id }}">{{ new.title }}</a>
+                            </p>
+                            <div class="f_pic">
+                                <a href="http://127.0.0.1:8000/detail/{{ new.new_id }}" class="general_pic_hover scale">
+                                    <img src="{{ new.image_url }}" style="width: 256px;height: 150px;margin-left: -17px">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <div class="date"><p>{{ new.news_date }}</p></div>
+
+                                <div class="r_part">
+                                    <div class="category"><p>浏览量：</p></div>
+                                    <a href="#" class="views">{{ new.view_count }}</a>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+
+                <div class="line_3" style="margin:20px 0px 24px;"></div>
+                <div class="line_2" style="margin:24px 0px 35px;"></div>
+                <div class="line_2" style="margin:20px 0px 0px;"></div>
+            </div>
+
+            <div class="sidebar">
+
+                <div class="separator" style="height:31px;"></div>
+                {#  热门新闻#}
+                <div class="block_popular_posts">
+                    <h4>热门新闻</h4>
+                    {% for hot_new in hot_news %}
+                        <div class="article">
+                            <div class="pic">
+                                <a href="http://127.0.0.1:8000/detail/{{ hot_new.new_id }}" class="w_hover">
+                                    <img src="{{ hot_new.image_url }}" alt="" style="width: 48px;height: 48px"/>
+                                    <span></span>
+                                </a>
+                            </div>
+                            <div class="text">
+                                <p class="title"><a
+                                        href="http://127.0.0.1:8000/detail/{{ hot_new.new_id }}">{{ hot_new.title }}</a>
+                                </p>
+                                <div class="date"><p>{{ hot_new.news_date }}</p></div>
+                                <div class="icons">
+                                    <ul>
+                                        <li><a href="#" class="views">{{ hot_new.view_count }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line_3"></div>
+                    {% endfor %}
+                </div>
+
+                <div class="separator" style="height:31px;"></div>
+
+                <div class="separator" style="height:31px;"></div>
+                {#   日历#}
+                <div class="block_calendar">
+                    <h4>日历</h4>
+
+                    <div class="calendar" id="calendar_sidebar">
+                    </div>
+
+                    <script type="text/javascript">
+                        var today = new Date();
+                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                        $('#calendar_sidebar').DatePicker({
+                            flat: true,
+                            date: date,
+                            calendars: 1,
+                            starts: 1,
+                            locale: {
+                                days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                                daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                                daysMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                                months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                                weekMin: 'wk'
+                            }
+                        });
+                    </script>
+
+                    <div class="line_2"></div>
+                </div>
+
+                <div class="separator" style="height:31px;"></div>
+                <div class="separator" style="height:31px;"></div>
+                <div class="separator" style="height:31px;"></div>
+            </div>
+            <div class="clearboth"></div>
+        </div>
+    </div>
+</div>

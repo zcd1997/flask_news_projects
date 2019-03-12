@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    {# 反盗技术#}
+    <meta name="referrer" content="no-referrer">
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <script type="text/javascript" src="/static/plugins/html5.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          type="text/css">
+
+    <link rel="stylesheet" href="/static/style.css" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+
+    <!-- PrettyPhoto start -->
+    <link rel="stylesheet" href="/static/plugins/prettyphoto/css/prettyPhoto.css" type="text/css"/>
+    <script type="text/javascript" src="/static/plugins/prettyphoto/jquery.prettyPhoto.js"></script>
+    <!-- PrettyPhoto end -->
+
+    <!-- jQuery tools start -->
+    <script type="text/javascript" src="/static/plugins/tools/jquery.tools.min.js"></script>
+    <!-- jQuery tools end -->
+
+    <!-- Calendar start -->
+    <link rel="stylesheet" href="/static/plugins/calendar/calendar.css" type="text/css"/>
+    <script type="text/javascript" src="/static/plugins/calendar/calendar.js"></script>
+    <!-- Calendar end -->
+
+    <!-- ScrollTo start -->
+    <script type="text/javascript" src="/static/plugins/scrollto/jquery.scroll.to.min.js"></script>
+    <!-- ScrollTo end -->
+
+    <!-- MediaElements start -->
+    <link rel="stylesheet" href="/static/plugins/video-audio/mediaelementplayer.css"/>
+    <script src="/static/plugins/video-audio/mediaelement-and-player.js"></script>
+    <!-- MediaElements end -->
+
+    <!-- FlexSlider start -->
+    <link rel="stylesheet" href="/static/plugins/flexslider/flexslider.css" type="text/css"/>
+    <script type="text/javascript" src="/static/plugins/flexslider/jquery.flexslider-min.js"></script>
+    <!-- FlexSlider end -->
+
+    <!-- iButtons start -->
+    <link rel="stylesheet" href="/static/plugins/ibuttons/css/jquery.ibutton.css" type="text/css"/>
+    <script type="text/javascript" src="/static/plugins/ibuttons/lib/jquery.ibutton.min.js"></script>
+    <!-- iButtons end -->
+
+    <!-- jQuery Form Plugin start -->
+    <script type="text/javascript" src="/static/plugins/ajaxform/jquery.form.js"></script>
+    <!-- jQuery Form Plugin end -->
+
+    <script type="text/javascript" src="/static/js/main.js"></script>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    {% block css %}
+
+    {% endblock %}
+    {% block jq %}
+
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="wrapper sticky_footer">
+    <!-- 头部 -->
+    {% block head %}
+
+    {% endblock %}
+
+    <!-- 内容-->
+    {% block main %}
+
+    {% endblock %}
+    <!-- 底部-->
+    {% block footer %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<div id="content" class="right_sidebar">
+    <div class="inner">
+        <div class="general_content">
+            <div class="main_content">
+                <div class="block_breadcrumbs">
+                    <div class="text"><p>You are here:</p></div>
+
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <!-- 分类名-->
+                        <li>{{ classify.c_name }}</li>
+                    </ul>
+                </div>
+                <div class="separator" style="height:30px;"></div>
+                <!-- 分类名-->
+
+                <h2>{{ classify.c_name }}</h2>
+
+
+                <div class="line_2" style="margin:21px 0px 21px;"></div>
+
+                <div class="block_topic_news">
+                    {% for new in news %}
+                        <article class="block_topic_post">
+                            <p class="title"><a
+                                    href="http://127.0.0.1:8000/detail/{{ new.new_id }}">{{ new.title }}</a></p>
+                            <div class="f_pic">
+                                <a href="http://127.0.0.1:8000/detail/{{ new.new_id }}" class="general_pic_hover scale">
+                                    <img src="{{ new.image_url }}" style="width: 256px;height: 150px;">
+                                </a>
+                            </div>
+
+                            <div class="info">
+                                <div class="date"><p>{{ new.news_date }}</p></div>
+
+                                <div class="r_part">
+                                    <div class="category"><p>浏览量：</p></div>
+                                    <a href="http://127.0.0.1:8000/detail/{{ new.new_id }}"
+                                       class="views">{{ new.view_count }}</a>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+
+                <div class="line_2" style="margin:25px 0px 25px;"></div>
+
+                <div class="block_pager">
+
+                    <div class="pages">
+                        <ul class="pagination">
+                            {% if dets.has_prev %}
+                                <li><a href="http://127.0.0.1:8000/cart/{{ classify.c_id }}/{{ dets.prev_num }}">上一页</a>
+                                </li>
+
+                            {% else %}
+                                <li class="disabled"><a href="#">上一页</a></li>
+                            {% endif %}
+                            {% for det in dets.iter_pages(left_edge=3,left_current=2,right_edge=2,right_current=3) %}
+                                {% if det %}
+                                    <li><a href="http://127.0.0.1:8000/cart/{{ classify.c_id }}/{{ det }}">{{ det }}</a>
+                                    </li>
+                                {% else %}
+                                    <li class="disabled"><a>...</a></li>
+
+                                {% endif %}
+                            {% endfor %}
+                            {% if dets.has_next %}
+                                <li><a href="http://127.0.0.1:8000/cart/{{ classify.c_id }}/{{ dets.next_num }}">下一页</a>
+                                </li>
+                            {% else %}
+                                <li class="disabled"><a href="#">下一页</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="clearboth"></div>
+                </div>
+
+            </div>
+
+            <div class="sidebar">
+                <div class="block_subscribes_sidebar">
+                    <div class="service" style="height: 80px">
+                        <span class="num" style="height: 40px">浏览量：{{ classify.view_count }}</span>
+                        {% if user and sub.is_sub == 1 %}
+                            <button class="btn btn-danger" type="button" id="sub_no" style="width: 265px;height: 45px"
+                                    cate_id='{{ classify.c_id }}'>取消订阅
+                            </button>
+                        {% else %}
+                            <button class="btn btn-danger" type="button" id="sub_yes" style="width: 265px;height: 45px"
+                                    cate_id='{{ classify.c_id }}'>订阅
+                            </button>
+                        {% endif %}
+
+                    </div>
+                    <script type="text/javascript">
+                        var sub_no_url = 'http://127.0.0.1:8000{{ url_for('home.sub_no') }}';
+                        var sub_yes_url = 'http://127.0.0.1:8000{{ url_for('home.sub_yes') }}';
+
+                        $(function () {
+                            let data = {};
+                            data = {
+                                cate_id: {{ classify.c_id }},
+                            };
+                            $("#sub_no").click(function () {
+
+                                $.get(sub_no_url, data, function (result) {
+                                    if (result.status === 200) {
+                                        location.reload();
+                                    }
+                                });
+                            });
+                            $("#sub_yes").click(function () {
+                                $.get(sub_yes_url, data, function (result) {
+                                    if (result.status === 200) {
+                                        location.reload();
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+
+                </div>
+                <div class="separator" style="height:31px;"></div>
+                <div class="block_popular_posts">
+                    <h4>相关新闻</h4>
+                    {% for hot_new in hot_news %}
+                        <div class="article">
+                            <div class="pic">
+                                <a href="http://127.0.0.1:8000/detail/{{ hot_new.new_id }}" class="w_hover">
+                                    <img src="{{ hot_new.image_url }}" alt="" style="width: 48px;height: 48px"/>
+                                    <span></span>
+                                </a>
+                            </div>
+                            <div class="text">
+                                <p class="title">
+                                    <a href="http://127.0.0.1:8000/detail/{{ hot_new.new_id }}">{{ hot_new.title }}</a>
+                                </p>
+                                <div class="date"><p>{{ hot_new.news_date }}</p></div>
+                                <div class="icons">
+                                    <ul>
+                                        <li><a href="#" class="views">{{ hot_new.view_count }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line_3"></div>
+                    {% endfor %}
+                </div>
+
+                <div class="separator" style="height:31px;"></div>
+                <div class="block_calendar">
+                    <h4>日历</h4>
+
+                    <div class="calendar" id="calendar_sidebar">
+                    </div>
+
+                    <script type="text/javascript">
+                        var today = new Date();
+                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                        $('#calendar_sidebar').DatePicker({
+                            flat: true,
+                            date: date,
+                            calendars: 1,
+                            starts: 1,
+                            locale: {
+                                days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                                daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                                daysMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                                months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                                weekMin: 'wk'
+                            }
+                        });
+                    </script>
+
+                    <div class="line_2"></div>
+                </div>
+
+            </div>
+
+
+            <div class="separator" style="height:31px;"></div>
+
+
+        </div>
+
+        <div class="clearboth"></div>
+    </div>
+</div>
+</div>

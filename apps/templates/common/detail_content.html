@@ -1,0 +1,95 @@
+<div id="content" class="right_sidebar">
+    <div class="inner">
+        <div class="general_content">
+            <div class="main_content">
+
+                <div class="line_4" style="margin:-4px 0px 18px;"></div>
+                {#            模板  有四条新闻#}
+                <div class="block_topic_news" style="width: 600px">
+
+                    <article class="block_topic_post" style="width: 600px">
+                        <p class="title" style="width: 600px;font-size: 20px;float: contour">{{ new.title }}</p>
+                        <div class="f_pic" style="width: 600px"><a href="#" class="general_pic_hover scale"><img
+                                src="{{ new.image_url }}" style="width: 550px"></a></div>
+                        <p class="text">{{ new.content }}</p>
+                        <div class="info">
+                            <div class="date"><p>{{ new.news_date }}</p></div>
+
+                            <div class="r_part" style="margin-right: 50px">
+                                <div class="category" ><p>浏览量：</p></div>
+                                <a href="#" class="views">{{ new.view_count }}</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                </div>
+
+                <div class="line_3" style="margin:20px 0px 24px;"></div>
+
+
+                <div class="line_2" style="margin:24px 0px 35px;"></div>
+
+                <div class="line_2" style="margin:20px 0px 0px;"></div>
+
+            </div>
+
+            <div class="sidebar">
+{#                <div class="block_subscribes_sidebar">#}
+{#                    <div class="service">#}
+{#                        <a href="#" class="rss">#}
+{#                            <span class="num">11 234</span>#}
+{#                            <span class="people">Subscribers</span>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+
+                <div class="separator" style="height:31px;"></div>
+
+
+                <div class="separator" style="height:31px;"></div>
+
+                <div class="separator" style="height:31px;"></div>
+
+                <div class="block_calendar">
+                    <h4>日历</h4>
+
+                    <div class="calendar" id="calendar_sidebar">
+                    </div>
+
+                    <script type="text/javascript">
+                        var today = new Date();
+                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                        $('#calendar_sidebar').DatePicker({
+                            flat: true,
+                            date: date,
+                            calendars: 1,
+                            starts: 1,
+                            locale: {
+                                days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                                daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                                daysMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                                months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                                weekMin: 'wk'
+                            }
+                        });
+                    </script>
+
+                    <div class="line_2"></div>
+                </div>
+
+                <div class="separator" style="height:31px;"></div>
+
+
+                <div class="separator" style="height:31px;"></div>
+
+
+                <div class="separator" style="height:31px;"></div>
+
+
+            </div>
+            <div class="clearboth"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<script src="/static/plugins/person/js/bootstrap.min.js"></script>
+<script src="/static/plugins/person/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 取消订阅操作
+        $('.remove').click(function () {
+
+            let delete_url = '{{ url_for('personal.Delete') }}'; //取消订阅路径
+            let $btn = $(this);
+            let data = {
+                sub_id: $(this).val()
+            };
+            $.post(delete_url, data, function (result) {
+                if (result.status === 200) {
+                    $btn.parents('tr').remove();
+                    {#window.location.href="http://127.0.0.1:8000{{ url_for('person.PersonCenter') }}"#}
+                }
+            })
+        });
+    })
+</script>
+
+
+<div style="width: 1000px;margin-left: 200px;background-color: darkgray;color: black">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>新闻类别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        {% for sub in subs %}
+            {% for names in sub.classify %}
+                <tbody>
+                <tr style="margin-top: 15px">
+                    <th scope="row">{{ sub.sub_id }}</th>
+                    <td>{{ names.c_name }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary remove" sub_id="{{ sub.sub_id }}"
+                                value="{{ sub.sub_id }}">取消订阅
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            {% endfor %}
+        {% endfor %}
+    </table>
+</div>
+
+
+
+

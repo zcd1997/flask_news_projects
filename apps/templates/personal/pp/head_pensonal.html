@@ -1,0 +1,116 @@
+<header>
+    <div id="header">
+        <section class="top">
+            <div class="inner">
+                <!-- 头部  左边-->
+                <div class="fl">
+                    <div class="block_top_menu">
+                        <ul>
+                            <li class="current"><a href="/">首页</a></li>
+                            <li><a href="https://map.baidu.com/">地图</a></li>
+                            <li><a href="#">更多功能</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--  头部 右边-->
+                <div class="fr">
+                    <div class="block_top_menu">
+                        <ul>
+                            {% if session['username'] %}
+                                <li class="current"><a href="#" class="open_popup">{{ session['username'] }}</a></li>
+                                <li class="current"><a href="{{ url_for('account.login_out') }}"
+                                                       class="open_popup">退出</a></li>
+                                <li><a href="{{ url_for('personal.PersonCenter') }}">个人中心</a></li>
+                            {% else %}
+                                <li class="current"><a href="#login" class="open_popup">登录</a></li>
+                                <li><a href="{{ url_for('account.register') }}">注册</a></li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearboth"></div>
+            </div>
+        </section>
+        <!--logo -->
+        <section class="bottom">
+            <div class="inner">
+                <div id="logo_top"><a href="/"><img src="/static/images/logo_top.png" alt="BusinessNews"
+                                                    title="BusinessNews"/></a></div>
+                <div class="clearboth"></div>
+            </div>
+        </section>
+        <!-- 分类 -->
+        <section class="section_main_menu">
+            <div class="inner">
+                <nav class="main_menu">
+                    <ul>
+                        <li class="current_page_item"><a href="/">首页</a>
+                        </li>
+                        <li class="big_dropdown" data-content="business"><a href="{{ url_for('personal.ChangePassword') }}">修改密码</a>
+                        </li>
+                        <li class="big_dropdown" data-content="business"><a href="{{ url_for('personal.ChangeEmail') }}">修改邮箱</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <section class="section_secondary_menu">
+
+        </section>
+    </div>
+</header>
+
+<div id="overlay"></div>
+<div id="login" class="block_popup">
+    <div class="popup">
+        <a href="#" class="close">关闭</a>
+
+        <div class="content">
+            <div class="title"><p>登录这个网站</p></div>
+
+            <div class="form">
+                <form action="{{ url_for('account.login') }}" method="post">
+                    <div class="column">
+                        <p class="label">用户名 : </p>
+                        <div class="field">
+                            <input type="text" name="username">
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <p class="label">密码 : </p>
+                        <div class="field">
+                            <input type="password" name="password">
+                        </div>
+                    </div>
+
+                    <div class="column_2">
+                        <div class="remember">
+                            <div class="checkbox">
+                                <input type="checkbox">
+                            </div>
+                            <div class="remember_label"><p>记住我</p></div>
+                        </div>
+                    </div>
+
+                    <div class="column_2">
+                        <p class="forgot_pass"><a href="#">忘记密码?</a></p>
+                    </div>
+
+                    <div class="column button">
+                        <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false"
+                                autocomplete="off">
+                            登录
+                        </button>
+                    </div>
+
+                    <div class="clearboth"></div>
+                </form>
+            </div>
+
+            <div class="subtitle"><a href="#">以管理员登录</a></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    注册
+{% endblock %}
+
+
+{% block css %}
+
+{% endblock %}
+
+{% block jq %}
+
+{% endblock %}
+
+{% block head %}
+    {% include 'common/head.html' %}
+{% endblock %}
+
+{% block main %}
+    <div id="content">
+        <div class="inner">
+            <div class="general_content">
+                <div class="main_content">
+                    <div class="block_breadcrumbs">
+                        <div class="text"><p>You are here:</p></div>
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li>注册</li>
+                        </ul>
+                    </div>
+                    <div class="separator" style="height:28px;"></div>
+                    <p class="general_title"><span>请在下方注册您的个人信息</span></p>
+                    <div class="separator" style="height:39px;"></div>
+
+                    <div class="block_registration" style="margin-left: 300px">
+                        <form action="{{ url_for('account.register') }}" method="post" class="w_validation">
+                            <div class="col_1">
+                                <div class="label">
+                                    <p>用户名:<span>*</span>:</p>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="req" name="username">
+                                </div>
+                                <div class="clearboth"></div>
+                                <div class="separator" style="height:14px;"></div>
+
+                                <div class="label">
+                                    <p>邮箱:<span>*</span>:</p>
+                                </div>
+                                <div class="field">
+                                    <input type="email" class="req" name="email">
+                                </div>
+                                <div class="clearboth"></div>
+                                <div class="separator" style="height:12px;"></div>
+
+                                <div class="label">
+                                    <p>密码:<span>*</span>:</p>
+                                </div>
+                                <div class="field">
+                                    <input type="password" class="req" name="password">
+                                </div>
+                                <div class="clearboth"></div>
+                                <div class="separator" style="height:12px;"></div>
+
+                                <div class="label">
+                                    <p>确认密码:<span>*</span>:</p>
+                                </div>
+                                <div class="field">
+                                    <input type="password" class="req" name="confirm_pwd">
+                                </div>
+                                <div class="clearboth"></div>
+                            </div>
+
+
+                            <div class="clearboth"></div>
+                            <div class="separator" style="height:32px;"></div>
+
+                            <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false"
+                                    autocomplete="off" style="width: 380px">
+                                注册
+                            </button>
+
+                        </form>
+                    </div>
+
+                    <div class="line_3" style="margin:42px 0px 0px;"></div>
+
+                </div>
+
+                <div class="clearboth"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
